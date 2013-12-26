@@ -8,7 +8,7 @@ package tamingbadcode.testfirst;
  * To change this template use File | Settings | File Templates.
  */
 public class MoscowClock extends CityClock {
-    public MoscowClock(int localTime) {
-        super(localTime);
+    public MoscowClock(int utcOffset) {
+        super(utcOffset);
     }
 }

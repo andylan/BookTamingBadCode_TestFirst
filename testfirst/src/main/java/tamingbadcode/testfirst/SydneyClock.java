@@ -8,7 +8,7 @@ package tamingbadcode.testfirst;
  * To change this template use File | Settings | File Templates.
  */
 public class SydneyClock extends CityClock {
-    public SydneyClock(int localTime) {
-        super(localTime);
+    public SydneyClock(int utcOffset) {
+        super(utcOffset);
     }
 }

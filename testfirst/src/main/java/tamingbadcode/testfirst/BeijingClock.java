@@ -8,7 +8,7 @@ package tamingbadcode.testfirst;
  * To change this template use File | Settings | File Templates.
  */
 public class BeijingClock extends CityClock {
-    public BeijingClock(int localTime) {
-        super(localTime);
+    public BeijingClock(int utcOffset) {
+        super(utcOffset);
     }
 }

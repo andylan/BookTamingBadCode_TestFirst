@@ -8,9 +8,9 @@ package tamingbadcode.testfirst;
  * To change this template use File | Settings | File Templates.
  */
 public class CityClock {
-    private int localTime;
+    private int utcOffset;
 
-    public CityClock(int localTime) {
-        this.localTime = localTime;
+    public CityClock(int utcOffset) {
+        this.utcOffset = utcOffset;
     }
 }
