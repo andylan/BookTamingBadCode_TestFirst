@@ -9,8 +9,17 @@ package tamingbadcode.testfirst;
  */
 public class CityClock {
     private int utcOffset;
+    private int localTime;
 
     public CityClock(int utcOffset) {
         this.utcOffset = utcOffset;
+    }
+
+    public void setLocalTime(int localTime) {
+        this.localTime = localTime;
+    }
+
+    public int getLocalTime() {
+        return localTime;
     }
 }
