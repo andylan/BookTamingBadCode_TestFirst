@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import static junit.framework.TestCase.assertEquals;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ben
@@ -26,6 +28,10 @@ public class HotelWorldClockTest {
         beijingClock.setLocalTime(9);
 
         // Then
+        assertEquals("Failure - the local time of Beijing should be 9", 9, beijingClock.getLocalTime());
         assertEquals("Failure - the local time of London should be 1", 1, londonClock.getLocalTime());
+        assertEquals("Failure - the local time of Moscow should be 5", 5, moscowClock.getLocalTime());
+        assertEquals("Failure - the local time of Sydney should be 11", 11, sydneyClock.getLocalTime());
+        assertEquals("Failure - the local time of New York should be 20", 20, newYorkClock.getLocalTime());
     }
 }
