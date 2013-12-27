@@ -18,6 +18,7 @@ public class HotelWorldClockTest {
     @Test
     public void WHEN_BeijingIsSetToNineOclock() {
         // Given
+        DeskClerk deskClerk = new DeskClerk();
         deskClerk.addCityClock("Beijing", new BeijingClock(8));
         deskClerk.addCityClock("London", new LondonClock(0));
         deskClerk.addCityClock("Moscow", new MoscowClock(4));
