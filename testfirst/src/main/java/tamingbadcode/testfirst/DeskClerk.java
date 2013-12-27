@@ -15,4 +15,8 @@ public class DeskClerk {
     public void addCityClock(String cityName, CityClock cityClock) {
         this.cities.put(cityName, cityClock);
     }
+
+    public void setLocalTimeToCityClock(int localTime, String cityName) {
+        this.cities.get(cityName).setLocalTime(localTime);
+    }
 }
