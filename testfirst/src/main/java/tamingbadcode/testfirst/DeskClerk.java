@@ -19,4 +19,8 @@ public class DeskClerk {
     public void setLocalTimeToCityClock(int localTime, String cityName) {
         this.cities.get(cityName).setLocalTime(localTime);
     }
+
+    public CityClock getCityClock(String cityName) {
+        return this.cities.get(cityName);
+    }
 }
