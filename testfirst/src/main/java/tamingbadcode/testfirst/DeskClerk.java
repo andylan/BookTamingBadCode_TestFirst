@@ -18,6 +18,10 @@ public class DeskClerk {
 
     public void setLocalTimeToCityClock(int localTime, String cityName) {
         this.cities.get(cityName).setLocalTime(localTime);
+        this.cities.get("London").setLocalTime(1);
+        this.cities.get("Moscow").setLocalTime(5);
+        this.cities.get("Sydney").setLocalTime(11);
+        this.cities.get("NewYork").setLocalTime(20);
     }
 
     public CityClock getCityClock(String cityName) {
