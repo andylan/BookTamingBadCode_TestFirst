@@ -8,4 +8,7 @@ package tamingbadcode.testfirst;
  * To change this template use File | Settings | File Templates.
  */
 public class DeskClerk {
+    public void addCityClock(String cityName, CityClock cityClock) {
+        this.cities.put(cityName, cityClock);
+    }
 }
