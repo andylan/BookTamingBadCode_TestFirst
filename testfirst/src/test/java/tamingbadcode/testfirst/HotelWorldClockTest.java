@@ -40,4 +40,30 @@ public class HotelWorldClockTest {
         assertEquals("Failure - the local time of New York should be 20"
                 , 20, deskClerk.getCityClock("NewYork").getLocalTime());
     }
+
+    @Test
+    public void WHEN_LondonIsSetToFiveOclock() {
+        // Given
+        DeskClerk deskClerk = new DeskClerk();
+        deskClerk.addCityClock("Beijing", new BeijingClock(8));
+        deskClerk.addCityClock("London", new LondonClock(0));
+        deskClerk.addCityClock("Moscow", new MoscowClock(4));
+        deskClerk.addCityClock("Sydney", new SydneyClock(10));
+        deskClerk.addCityClock("NewYork", new NewYorkClock(-5));
+
+        // When
+        deskClerk.setLocalTimeToCityClock(5, "London");
+
+        // Then
+        assertEquals("Failure - the local time of Beijing should be 13"
+                , 13, deskClerk.getCityClock("Beijing").getLocalTime());
+        assertEquals("Failure - the local time of London should be 5"
+                , 5, deskClerk.getCityClock("London").getLocalTime());
+        assertEquals("Failure - the local time of Moscow should be 9"
+                , 9, deskClerk.getCityClock("Moscow").getLocalTime());
+        assertEquals("Failure - the local time of Sydney should be 15"
+                , 15, deskClerk.getCityClock("Sydney").getLocalTime());
+        assertEquals("Failure - the local time of New York should be 0"
+                , 0, deskClerk.getCityClock("NewYork").getLocalTime());
+    }
 }
