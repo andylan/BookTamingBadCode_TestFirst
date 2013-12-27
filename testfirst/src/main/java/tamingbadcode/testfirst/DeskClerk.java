@@ -1,5 +1,7 @@
 package tamingbadcode.testfirst;
 
+import java.util.HashMap;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ben
@@ -8,6 +10,8 @@ package tamingbadcode.testfirst;
  * To change this template use File | Settings | File Templates.
  */
 public class DeskClerk {
+    private HashMap<String, CityClock> cities = new HashMap<String, CityClock>();
+
     public void addCityClock(String cityName, CityClock cityClock) {
         this.cities.put(cityName, cityClock);
     }
