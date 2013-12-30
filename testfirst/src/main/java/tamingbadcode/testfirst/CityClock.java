@@ -8,10 +8,12 @@ package tamingbadcode.testfirst;
  * To change this template use File | Settings | File Templates.
  */
 public class CityClock {
+    private String cityName;
     private int utcOffset;
     private int localTime;
 
-    public CityClock(int utcOffset) {
+    public CityClock(String cityName, int utcOffset) {
+        this.cityName = cityName;
         this.utcOffset = utcOffset;
     }
 

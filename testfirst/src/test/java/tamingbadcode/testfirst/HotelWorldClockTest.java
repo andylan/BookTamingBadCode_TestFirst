@@ -22,11 +22,11 @@ public class HotelWorldClockTest {
     @Before
     public void initialization() {
         // Given
-        deskClerk.addCityClock("Beijing", new CityClock("Beijing", 8);
-        deskClerk.addCityClock("London", new CityClock("London", 0);
-        deskClerk.addCityClock("Moscow", new CityClock("Moscow", 4);
-        deskClerk.addCityClock("Sydney", new CityClock("Sydney", 10);
-        deskClerk.addCityClock("NewYork", new CityClock("NewYork", -5);
+        deskClerk.addCityClock("Beijing", new CityClock("Beijing", 8));
+        deskClerk.addCityClock("London", new CityClock("London", 0));
+        deskClerk.addCityClock("Moscow", new CityClock("Moscow", 4));
+        deskClerk.addCityClock("Sydney", new CityClock("Sydney", 10));
+        deskClerk.addCityClock("NewYork", new CityClock("NewYork", -5));
     }
 
     @Test
