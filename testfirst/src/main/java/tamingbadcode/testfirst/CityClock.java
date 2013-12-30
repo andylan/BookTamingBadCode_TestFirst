@@ -28,8 +28,8 @@ public class CityClock {
         return localTime;
     }
 
-    public int getUtcZeroTime(int localTime) {
-        return localTime - timeZone;
+    public long getUtcZeroTime(Calendar localTime) {
+        return localTime.getTimeInMillis();
     }
 
     public void setLocalTimeByUtcZeroTime(int utcZeroTime) {
