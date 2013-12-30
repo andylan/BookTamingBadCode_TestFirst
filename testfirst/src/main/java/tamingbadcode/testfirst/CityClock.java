@@ -22,4 +22,8 @@ public class CityClock {
     public int getLocalTime() {
         return localTime;
     }
+
+    public int getUtcZeroTime(int localTime) {
+        return localTime - utcOffset;
+    }
 }
