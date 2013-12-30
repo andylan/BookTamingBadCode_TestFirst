@@ -1,5 +1,7 @@
 package tamingbadcode.testfirst;
 
+import java.util.TimeZone;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ben
@@ -9,12 +11,12 @@ package tamingbadcode.testfirst;
  */
 public class CityClock {
     private String cityName;
-    private int utcOffset;
+    private TimeZone timeZone;
     private int localTime;
 
-    public CityClock(String cityName, int utcOffset) {
+    public CityClock(String cityName, TimeZone timeZone) {
         this.cityName = cityName;
-        this.utcOffset = utcOffset;
+        this.timeZone = timeZone;
     }
 
     public void setLocalTime(int localTime) {
@@ -26,11 +28,11 @@ public class CityClock {
     }
 
     public int getUtcZeroTime(int localTime) {
-        return localTime - utcOffset;
+        return localTime - timeZone;
     }
 
     public void setLocalTimeByUtcZeroTime(int utcZeroTime) {
-        this.localTime = to24HourTime(utcZeroTime + this.utcOffset);
+        this.localTime = to24HourTime(utcZeroTime + this.timeZone);
     }
 
     private int to24HourTime(int time) {
