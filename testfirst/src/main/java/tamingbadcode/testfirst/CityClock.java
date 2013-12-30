@@ -37,8 +37,4 @@ public class CityClock {
         time.setTimeInMillis(utcZeroTime);
         this.localTime = time;
     }
-
-    private int to24HourTime(int time) {
-        return (time + 24) % 24;
-    }
 }
