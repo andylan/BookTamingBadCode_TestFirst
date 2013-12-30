@@ -18,10 +18,18 @@ public class DeskClerk {
 
     public void setLocalTimeToCityClock(int localTime, String cityName) {
         this.cities.get(cityName).setLocalTime(localTime);
-        this.cities.get("London").setLocalTime(1);
-        this.cities.get("Moscow").setLocalTime(5);
-        this.cities.get("Sydney").setLocalTime(11);
-        this.cities.get("NewYork").setLocalTime(20);
+        if ("Beijing".equals(cityName)) {
+            this.cities.get("London").setLocalTime(1);
+            this.cities.get("Moscow").setLocalTime(5);
+            this.cities.get("Sydney").setLocalTime(11);
+            this.cities.get("NewYork").setLocalTime(20);
+        }
+        if ("London".equals(cityName)) {
+            this.cities.get("Beijing").setLocalTime(13);
+            this.cities.get("Moscow").setLocalTime(9);
+            this.cities.get("Sydney").setLocalTime(15);
+            this.cities.get("NewYork").setLocalTime(0);
+        }
     }
 
     public CityClock getCityClock(String cityName) {
