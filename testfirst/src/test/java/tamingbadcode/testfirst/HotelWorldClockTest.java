@@ -35,36 +35,24 @@ public class HotelWorldClockTest {
     @Test
     public void WHEN_BeijingIsSetToNineOclock() {
         // Given
-        Calendar timeBeijing = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
-        timeBeijing.set(2013, Calendar.DECEMBER, 30, 9, 0, 0);
-
-        Calendar timeLondon = Calendar.getInstance(TimeZone.getTimeZone("GMT+0"));
-        timeLondon.set(2013, Calendar.DECEMBER, 30, 1, 0, 0);
-
-        Calendar timeMoscow = Calendar.getInstance(TimeZone.getTimeZone("GMT+4"));
-        timeMoscow.set(2013, Calendar.DECEMBER, 30, 5, 0, 0);
-
-        Calendar timeSydney = Calendar.getInstance(TimeZone.getTimeZone("GMT+10"));
-        timeSydney.set(2013, Calendar.DECEMBER, 30, 11, 0, 0);
-
-        Calendar timeNewYork = Calendar.getInstance(TimeZone.getTimeZone("GMT-5"));
-        timeNewYork.set(2013, Calendar.DECEMBER, 29, 20, 0, 0);
+        Calendar time = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
+        time.set(2013, Calendar.DECEMBER, 30, 9, 0, 0);
 
         // When
-        deskClerk.setLocalTimeToCityClock(timeBeijing.getTime(), "Beijing");
+        deskClerk.setLocalTimeToCityClock(time, "Beijing");
 
         // Then
         assertEquals("Failure - the local time of Beijing should be 9"
-                , timeBeijing.getTime()
-                , deskClerk.getCityClock("Beijing").getLocalTime());
+                , 9
+                , deskClerk.getCityClock("Beijing").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of London should be 1"
-                , timeLondon, deskClerk.getCityClock("London").getLocalTime());
+                , 1, deskClerk.getCityClock("London").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of Moscow should be 5"
-                , timeMoscow, deskClerk.getCityClock("Moscow").getLocalTime());
+                , 5, deskClerk.getCityClock("Moscow").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of Sydney should be 11"
-                , timeSydney, deskClerk.getCityClock("Sydney").getLocalTime());
+                , 11, deskClerk.getCityClock("Sydney").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of New York should be 20"
-                , timeNewYork, deskClerk.getCityClock("NewYork").getLocalTime());
+                , 20, deskClerk.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
     }
 
 }
