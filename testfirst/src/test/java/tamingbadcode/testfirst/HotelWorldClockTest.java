@@ -1,5 +1,6 @@
 package tamingbadcode.testfirst;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -15,16 +16,21 @@ import static junit.framework.TestCase.assertEquals;
  */
 @RunWith(JUnit4.class)
 public class HotelWorldClockTest {
-    @Test
-    public void WHEN_BeijingIsSetToNineOclock() {
+
+    private DeskClerk deskClerk = new DeskClerk();
+
+    @Before
+    public void initialization() {
         // Given
-        DeskClerk deskClerk = new DeskClerk();
         deskClerk.addCityClock("Beijing", new BeijingClock(8));
         deskClerk.addCityClock("London", new LondonClock(0));
         deskClerk.addCityClock("Moscow", new MoscowClock(4));
         deskClerk.addCityClock("Sydney", new SydneyClock(10));
         deskClerk.addCityClock("NewYork", new NewYorkClock(-5));
+    }
 
+    @Test
+    public void WHEN_BeijingIsSetToNineOclock() {
         // When
         deskClerk.setLocalTimeToCityClock(9, "Beijing");
 
@@ -43,14 +49,6 @@ public class HotelWorldClockTest {
 
     @Test
     public void WHEN_LondonIsSetToFiveOclock() {
-        // Given
-        DeskClerk deskClerk = new DeskClerk();
-        deskClerk.addCityClock("Beijing", new BeijingClock(8));
-        deskClerk.addCityClock("London", new LondonClock(0));
-        deskClerk.addCityClock("Moscow", new MoscowClock(4));
-        deskClerk.addCityClock("Sydney", new SydneyClock(10));
-        deskClerk.addCityClock("NewYork", new NewYorkClock(-5));
-
         // When
         deskClerk.setLocalTimeToCityClock(5, "London");
 
