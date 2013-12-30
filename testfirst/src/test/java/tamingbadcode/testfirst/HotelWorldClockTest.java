@@ -5,6 +5,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.util.Calendar;
+import java.util.TimeZone;
+
 import static junit.framework.TestCase.assertEquals;
 
 /**
@@ -22,64 +25,46 @@ public class HotelWorldClockTest {
     @Before
     public void initialization() {
         // Given
-        deskClerk.addCityClock("Beijing", new CityClock("Beijing", 8));
-        deskClerk.addCityClock("London", new CityClock("London", 0));
-        deskClerk.addCityClock("Moscow", new CityClock("Moscow", 4));
-        deskClerk.addCityClock("Sydney", new CityClock("Sydney", 10));
-        deskClerk.addCityClock("NewYork", new CityClock("NewYork", -5));
+        deskClerk.addCityClock("Beijing", new CityClock("Beijing", TimeZone.getTimeZone("GMT+8")));
+        deskClerk.addCityClock("London", new CityClock("London", TimeZone.getTimeZone("GMT+0")));
+        deskClerk.addCityClock("Moscow", new CityClock("Moscow", TimeZone.getTimeZone("GMT+4")));
+        deskClerk.addCityClock("Sydney", new CityClock("Sydney", TimeZone.getTimeZone("GMT+10")));
+        deskClerk.addCityClock("NewYork", new CityClock("NewYork", TimeZone.getTimeZone("GMT-5")));
     }
 
     @Test
     public void WHEN_BeijingIsSetToNineOclock() {
+        // Given
+        Calendar timeBeijing = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
+        timeBeijing.set(2013, Calendar.DECEMBER, 30, 9, 0, 0);
+
+        Calendar timeLondon = Calendar.getInstance(TimeZone.getTimeZone("GMT+0"));
+        timeLondon.set(2013, Calendar.DECEMBER, 30, 1, 0, 0);
+
+        Calendar timeMoscow = Calendar.getInstance(TimeZone.getTimeZone("GMT+4"));
+        timeMoscow.set(2013, Calendar.DECEMBER, 30, 5, 0, 0);
+
+        Calendar timeSydney = Calendar.getInstance(TimeZone.getTimeZone("GMT+10"));
+        timeSydney.set(2013, Calendar.DECEMBER, 30, 11, 0, 0);
+
+        Calendar timeNewYork = Calendar.getInstance(TimeZone.getTimeZone("GMT-5"));
+        timeNewYork.set(2013, Calendar.DECEMBER, 29, 20, 0, 0);
+
         // When
-        deskClerk.setLocalTimeToCityClock(9, "Beijing");
+        deskClerk.setLocalTimeToCityClock(timeBeijing.getTime(), "Beijing");
 
         // Then
         assertEquals("Failure - the local time of Beijing should be 9"
-                , 9, deskClerk.getCityClock("Beijing").getLocalTime());
+                , timeBeijing.getTime()
+                , deskClerk.getCityClock("Beijing").getLocalTime());
         assertEquals("Failure - the local time of London should be 1"
-                , 1, deskClerk.getCityClock("London").getLocalTime());
+                , timeLondon, deskClerk.getCityClock("London").getLocalTime());
         assertEquals("Failure - the local time of Moscow should be 5"
-                , 5, deskClerk.getCityClock("Moscow").getLocalTime());
+                , timeMoscow, deskClerk.getCityClock("Moscow").getLocalTime());
         assertEquals("Failure - the local time of Sydney should be 11"
-                , 11, deskClerk.getCityClock("Sydney").getLocalTime());
+                , timeSydney, deskClerk.getCityClock("Sydney").getLocalTime());
         assertEquals("Failure - the local time of New York should be 20"
-                , 20, deskClerk.getCityClock("NewYork").getLocalTime());
+                , timeNewYork, deskClerk.getCityClock("NewYork").getLocalTime());
     }
 
-    @Test
-    public void WHEN_LondonIsSetToFiveOclock() {
-        // When
-        deskClerk.setLocalTimeToCityClock(5, "London");
-
-        // Then
-        assertEquals("Failure - the local time of Beijing should be 13"
-                , 13, deskClerk.getCityClock("Beijing").getLocalTime());
-        assertEquals("Failure - the local time of London should be 5"
-                , 5, deskClerk.getCityClock("London").getLocalTime());
-        assertEquals("Failure - the local time of Moscow should be 9"
-                , 9, deskClerk.getCityClock("Moscow").getLocalTime());
-        assertEquals("Failure - the local time of Sydney should be 15"
-                , 15, deskClerk.getCityClock("Sydney").getLocalTime());
-        assertEquals("Failure - the local time of New York should be 0"
-                , 0, deskClerk.getCityClock("NewYork").getLocalTime());
-    }
-
-    @Test
-    public void WHEN_MoscowIsSetToZeroOclock() {
-        // When
-        deskClerk.setLocalTimeToCityClock(0, "Moscow");
-
-        // Then
-        assertEquals("Failure - the local time of Beijing should be 4"
-                , 4, deskClerk.getCityClock("Beijing").getLocalTime());
-        assertEquals("Failure - the local time of London should be 20"
-                , 20, deskClerk.getCityClock("London").getLocalTime());
-        assertEquals("Failure - the local time of Moscow should be 0"
-                , 0, deskClerk.getCityClock("Moscow").getLocalTime());
-        assertEquals("Failure - the local time of Sydney should be 6"
-                , 6, deskClerk.getCityClock("Sydney").getLocalTime());
-        assertEquals("Failure - the local time of New York should be 15"
-                , 15, deskClerk.getCityClock("NewYork").getLocalTime());
-    }
 }
