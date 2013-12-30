@@ -22,7 +22,7 @@ public class DeskClerk {
         notifyAllCityClocks(this.cities.get(cityName).getUtcZeroTime(localTime));
     }
 
-    private void notifyAllCityClocks(int utcZeroTime) {
+    private void notifyAllCityClocks(long utcZeroTime) {
         for (String cityName : this.cities.keySet()) {
             this.cities.get(cityName).setLocalTimeByUtcZeroTime(utcZeroTime);
         }

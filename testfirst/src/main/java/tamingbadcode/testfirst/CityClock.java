@@ -32,8 +32,10 @@ public class CityClock {
         return localTime.getTimeInMillis();
     }
 
-    public void setLocalTimeByUtcZeroTime(int utcZeroTime) {
-        this.localTime = to24HourTime(utcZeroTime + this.timeZone);
+    public void setLocalTimeByUtcZeroTime(long utcZeroTime) {
+        Calendar time = Calendar.getInstance(this.timeZone);
+        time.setTimeInMillis(utcZeroTime);
+        this.localTime = time;
     }
 
     private int to24HourTime(int time) {
