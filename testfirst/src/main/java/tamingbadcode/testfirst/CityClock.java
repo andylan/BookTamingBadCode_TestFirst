@@ -28,6 +28,10 @@ public class CityClock {
     }
 
     public void setLocalTimeByUtcZeroTime(int utcZeroTime) {
-        this.localTime = utcZeroTime + this.utcOffset;
+        this.localTime = to24HourTime(utcZeroTime + this.utcOffset);
+    }
+
+    private int to24HourTime(int time) {
+        return (time + 24) % 24;
     }
 }
