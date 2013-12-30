@@ -1,5 +1,6 @@
 package tamingbadcode.testfirst;
 
+import java.util.Calendar;
 import java.util.TimeZone;
 
 /**
@@ -12,14 +13,14 @@ import java.util.TimeZone;
 public class CityClock {
     private String cityName;
     private TimeZone timeZone;
-    private int localTime;
+    private Calendar localTime;
 
     public CityClock(String cityName, TimeZone timeZone) {
         this.cityName = cityName;
         this.timeZone = timeZone;
     }
 
-    public void setLocalTime(int localTime) {
+    public void setLocalTime(Calendar localTime) {
         this.localTime = localTime;
     }
 

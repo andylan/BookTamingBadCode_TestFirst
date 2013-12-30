@@ -1,5 +1,6 @@
 package tamingbadcode.testfirst;
 
+import java.util.Calendar;
 import java.util.HashMap;
 
 /**
@@ -16,7 +17,7 @@ public class DeskClerk {
         this.cities.put(cityName, cityClock);
     }
 
-    public void setLocalTimeToCityClock(int localTime, String cityName) {
+    public void setLocalTimeToCityClock(Calendar localTime, String cityName) {
         this.cities.get(cityName).setLocalTime(localTime);
         notifyAllCityClocks(this.cities.get(cityName).getUtcZeroTime(localTime));
     }
