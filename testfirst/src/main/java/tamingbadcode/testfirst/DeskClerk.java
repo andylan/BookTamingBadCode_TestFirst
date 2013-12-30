@@ -18,6 +18,7 @@ public class DeskClerk {
 
     public void setLocalTimeToCityClock(int localTime, String cityName) {
         this.cities.get(cityName).setLocalTime(localTime);
+        notifyAllCityClocks(this.cities.get(cityName).getUtcZeroTime(localTime));
         if ("Beijing".equals(cityName)) {
             this.cities.get("London").setLocalTime(1);
             this.cities.get("Moscow").setLocalTime(5);
