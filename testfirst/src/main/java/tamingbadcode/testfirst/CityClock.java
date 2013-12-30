@@ -24,7 +24,7 @@ public class CityClock {
         this.localTime = localTime;
     }
 
-    public int getLocalTime() {
+    public Calendar getLocalTime() {
         return localTime;
     }
 
