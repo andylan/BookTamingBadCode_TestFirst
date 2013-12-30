@@ -78,4 +78,27 @@ public class HotelWorldClockTest {
                 , 0, deskClerk.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
     }
 
+    @Test
+    public void WHEN_MoscowIsSetToZeroOclock() {
+        // Given
+        Calendar time = Calendar.getInstance(TimeZone.getTimeZone("GMT+4"));
+        time.set(2013, Calendar.DECEMBER, 30, 0, 0, 0);
+
+        // When
+        deskClerk.setLocalTimeToCityClock(time, "Moscow");
+
+        // Then
+        assertEquals("Failure - the local time of Beijing should be 4"
+                , 4
+                , deskClerk.getCityClock("Beijing").getLocalTime().get(Calendar.HOUR_OF_DAY));
+        assertEquals("Failure - the local time of London should be 20"
+                , 20, deskClerk.getCityClock("London").getLocalTime().get(Calendar.HOUR_OF_DAY));
+        assertEquals("Failure - the local time of Moscow should be 0"
+                , 0, deskClerk.getCityClock("Moscow").getLocalTime().get(Calendar.HOUR_OF_DAY));
+        assertEquals("Failure - the local time of Sydney should be 6"
+                , 6, deskClerk.getCityClock("Sydney").getLocalTime().get(Calendar.HOUR_OF_DAY));
+        assertEquals("Failure - the local time of New York should be 15"
+                , 15, deskClerk.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
+    }
+
 }
