@@ -33,6 +33,12 @@ public class DeskClerk {
         }
     }
 
+    private void notifyAllCityClocks(int utcZeroTime) {
+        for (String cityName : this.cities.keySet()) {
+            this.cities.get(cityName).setLocalTimeByUtcZeroTime(utcZeroTime);
+        }
+    }
+
     public CityClock getCityClock(String cityName) {
         return this.cities.get(cityName);
     }
