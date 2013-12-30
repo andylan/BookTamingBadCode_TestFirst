@@ -64,4 +64,22 @@ public class HotelWorldClockTest {
         assertEquals("Failure - the local time of New York should be 0"
                 , 0, deskClerk.getCityClock("NewYork").getLocalTime());
     }
+
+    @Test
+    public void WHEN_MoscowIsSetToZeroOclock() {
+        // When
+        deskClerk.setLocalTimeToCityClock(0, "Moscow");
+
+        // Then
+        assertEquals("Failure - the local time of Beijing should be 4"
+                , 4, deskClerk.getCityClock("Beijing").getLocalTime());
+        assertEquals("Failure - the local time of London should be 20"
+                , 20, deskClerk.getCityClock("London").getLocalTime());
+        assertEquals("Failure - the local time of Moscow should be 0"
+                , 0, deskClerk.getCityClock("Moscow").getLocalTime());
+        assertEquals("Failure - the local time of Sydney should be 6"
+                , 6, deskClerk.getCityClock("Sydney").getLocalTime());
+        assertEquals("Failure - the local time of New York should be 15"
+                , 15, deskClerk.getCityClock("NewYork").getLocalTime());
+    }
 }
