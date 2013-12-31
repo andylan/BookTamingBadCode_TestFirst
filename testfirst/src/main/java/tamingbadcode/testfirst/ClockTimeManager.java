@@ -2,6 +2,7 @@ package tamingbadcode.testfirst;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User: Ben
@@ -9,7 +10,7 @@ import java.util.HashMap;
  * Time: 下午1:02
  */
 public class ClockTimeManager {
-    private HashMap<String, CityClock> cities = new HashMap<String, CityClock>();
+    private Map<String, CityClock> cities = new HashMap<String, CityClock>();
 
     public void addCityClock(String cityName, CityClock cityClock) {
         this.cities.put(cityName, cityClock);
