@@ -28,6 +28,7 @@ public class HotelWorldClockTest {
         clockTimeManager.addCityClock("Moscow", new CityClock(TimeZone.getTimeZone("GMT+4")));
         clockTimeManager.addCityClock("Sydney", new CityClock(TimeZone.getTimeZone("GMT+10")));
         clockTimeManager.addCityClock("NewYork", new CityClock(TimeZone.getTimeZone("GMT-5")));
+        clockTimeManager.addCityClock("SanFrancisco", new CityClock(TimeZone.getTimeZone("GMT-8")));
     }
 
     @Test
@@ -97,6 +98,31 @@ public class HotelWorldClockTest {
                 , 6, clockTimeManager.getCityClock("Sydney").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of New York should be 15"
                 , 15, clockTimeManager.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
+    }
+
+    @Test
+    public void WHEN_SanFranciscoIsSetToEighteenOclock() {
+        // Given
+        Calendar time = Calendar.getInstance(TimeZone.getTimeZone("GMT-8"));
+        time.set(2013, Calendar.DECEMBER, 30, 18, 0, 0);
+
+        // When
+        clockTimeManager.setLocalTimeToCityClock(time, "SanFrancisco");
+
+        // Then
+        assertEquals("Failure - the local time of Beijing should be 10"
+                , 10
+                , clockTimeManager.getCityClock("Beijing").getLocalTime().get(Calendar.HOUR_OF_DAY));
+        assertEquals("Failure - the local time of London should be 2"
+                , 2, clockTimeManager.getCityClock("London").getLocalTime().get(Calendar.HOUR_OF_DAY));
+        assertEquals("Failure - the local time of Moscow should be 6"
+                , 6, clockTimeManager.getCityClock("Moscow").getLocalTime().get(Calendar.HOUR_OF_DAY));
+        assertEquals("Failure - the local time of Sydney should be 12"
+                , 12, clockTimeManager.getCityClock("Sydney").getLocalTime().get(Calendar.HOUR_OF_DAY));
+        assertEquals("Failure - the local time of New York should be 21"
+                , 21, clockTimeManager.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
+        assertEquals("Failure - the local time of San Francisco should be 18"
+                , 18, clockTimeManager.getCityClock("San Francisco").getLocalTime().get(Calendar.HOUR_OF_DAY));
     }
 
 }
