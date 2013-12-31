@@ -11,25 +11,23 @@ import java.util.TimeZone;
 import static junit.framework.TestCase.assertEquals;
 
 /**
- * Created with IntelliJ IDEA.
  * User: Ben
  * Date: 13-12-26
  * Time: 下午6:30
- * To change this template use File | Settings | File Templates.
  */
 @RunWith(JUnit4.class)
 public class HotelWorldClockTest {
 
-    private DeskClerk deskClerk = new DeskClerk();
+    private ClockTimeManager clockTimeManager = new ClockTimeManager();
 
     @Before
     public void initialization() {
         // Given
-        deskClerk.addCityClock("Beijing", new CityClock("Beijing", TimeZone.getTimeZone("GMT+8")));
-        deskClerk.addCityClock("London", new CityClock("London", TimeZone.getTimeZone("GMT+0")));
-        deskClerk.addCityClock("Moscow", new CityClock("Moscow", TimeZone.getTimeZone("GMT+4")));
-        deskClerk.addCityClock("Sydney", new CityClock("Sydney", TimeZone.getTimeZone("GMT+10")));
-        deskClerk.addCityClock("NewYork", new CityClock("NewYork", TimeZone.getTimeZone("GMT-5")));
+        clockTimeManager.addCityClock("Beijing", new CityClock("Beijing", TimeZone.getTimeZone("GMT+8")));
+        clockTimeManager.addCityClock("London", new CityClock("London", TimeZone.getTimeZone("GMT+0")));
+        clockTimeManager.addCityClock("Moscow", new CityClock("Moscow", TimeZone.getTimeZone("GMT+4")));
+        clockTimeManager.addCityClock("Sydney", new CityClock("Sydney", TimeZone.getTimeZone("GMT+10")));
+        clockTimeManager.addCityClock("NewYork", new CityClock("NewYork", TimeZone.getTimeZone("GMT-5")));
     }
 
     @Test
@@ -39,20 +37,20 @@ public class HotelWorldClockTest {
         time.set(2013, Calendar.DECEMBER, 30, 9, 0, 0);
 
         // When
-        deskClerk.setLocalTimeToCityClock(time, "Beijing");
+        clockTimeManager.setLocalTimeToCityClock(time, "Beijing");
 
         // Then
         assertEquals("Failure - the local time of Beijing should be 9"
                 , 9
-                , deskClerk.getCityClock("Beijing").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , clockTimeManager.getCityClock("Beijing").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of London should be 1"
-                , 1, deskClerk.getCityClock("London").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 1, clockTimeManager.getCityClock("London").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of Moscow should be 5"
-                , 5, deskClerk.getCityClock("Moscow").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 5, clockTimeManager.getCityClock("Moscow").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of Sydney should be 11"
-                , 11, deskClerk.getCityClock("Sydney").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 11, clockTimeManager.getCityClock("Sydney").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of New York should be 20"
-                , 20, deskClerk.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 20, clockTimeManager.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
     }
 
     @Test
@@ -62,20 +60,20 @@ public class HotelWorldClockTest {
         time.set(2013, Calendar.DECEMBER, 30, 5, 0, 0);
 
         // When
-        deskClerk.setLocalTimeToCityClock(time, "London");
+        clockTimeManager.setLocalTimeToCityClock(time, "London");
 
         // Then
         assertEquals("Failure - the local time of Beijing should be 13"
                 , 13
-                , deskClerk.getCityClock("Beijing").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , clockTimeManager.getCityClock("Beijing").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of London should be 5"
-                , 5, deskClerk.getCityClock("London").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 5, clockTimeManager.getCityClock("London").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of Moscow should be 9"
-                , 9, deskClerk.getCityClock("Moscow").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 9, clockTimeManager.getCityClock("Moscow").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of Sydney should be 15"
-                , 15, deskClerk.getCityClock("Sydney").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 15, clockTimeManager.getCityClock("Sydney").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of New York should be 0"
-                , 0, deskClerk.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 0, clockTimeManager.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
     }
 
     @Test
@@ -85,20 +83,20 @@ public class HotelWorldClockTest {
         time.set(2013, Calendar.DECEMBER, 30, 0, 0, 0);
 
         // When
-        deskClerk.setLocalTimeToCityClock(time, "Moscow");
+        clockTimeManager.setLocalTimeToCityClock(time, "Moscow");
 
         // Then
         assertEquals("Failure - the local time of Beijing should be 4"
                 , 4
-                , deskClerk.getCityClock("Beijing").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , clockTimeManager.getCityClock("Beijing").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of London should be 20"
-                , 20, deskClerk.getCityClock("London").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 20, clockTimeManager.getCityClock("London").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of Moscow should be 0"
-                , 0, deskClerk.getCityClock("Moscow").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 0, clockTimeManager.getCityClock("Moscow").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of Sydney should be 6"
-                , 6, deskClerk.getCityClock("Sydney").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 6, clockTimeManager.getCityClock("Sydney").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of New York should be 15"
-                , 15, deskClerk.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 15, clockTimeManager.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
     }
 
 }
