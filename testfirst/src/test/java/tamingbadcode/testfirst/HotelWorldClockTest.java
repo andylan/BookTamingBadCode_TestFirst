@@ -122,7 +122,7 @@ public class HotelWorldClockTest {
         assertEquals("Failure - the local time of New York should be 21"
                 , 21, clockTimeManager.getCityClock("NewYork").getLocalTime().get(Calendar.HOUR_OF_DAY));
         assertEquals("Failure - the local time of San Francisco should be 18"
-                , 18, clockTimeManager.getCityClock("San Francisco").getLocalTime().get(Calendar.HOUR_OF_DAY));
+                , 18, clockTimeManager.getCityClock("SanFrancisco").getLocalTime().get(Calendar.HOUR_OF_DAY));
     }
 
 }
