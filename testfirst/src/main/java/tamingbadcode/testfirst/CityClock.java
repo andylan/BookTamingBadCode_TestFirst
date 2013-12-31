@@ -9,12 +9,10 @@ import java.util.TimeZone;
  * Time: 下午9:08
  */
 public class CityClock {
-    private String cityName;
     private TimeZone timeZone;
     private Calendar localTime;
 
-    public CityClock(String cityName, TimeZone timeZone) {
-        this.cityName = cityName;
+    public CityClock(TimeZone timeZone) {
         this.timeZone = timeZone;
     }
 

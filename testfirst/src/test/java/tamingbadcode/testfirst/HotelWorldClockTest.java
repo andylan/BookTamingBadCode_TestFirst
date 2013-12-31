@@ -23,11 +23,11 @@ public class HotelWorldClockTest {
     @Before
     public void initialization() {
         // Given
-        clockTimeManager.addCityClock("Beijing", new CityClock("Beijing", TimeZone.getTimeZone("GMT+8")));
-        clockTimeManager.addCityClock("London", new CityClock("London", TimeZone.getTimeZone("GMT+0")));
-        clockTimeManager.addCityClock("Moscow", new CityClock("Moscow", TimeZone.getTimeZone("GMT+4")));
-        clockTimeManager.addCityClock("Sydney", new CityClock("Sydney", TimeZone.getTimeZone("GMT+10")));
-        clockTimeManager.addCityClock("NewYork", new CityClock("NewYork", TimeZone.getTimeZone("GMT-5")));
+        clockTimeManager.addCityClock("Beijing", new CityClock(TimeZone.getTimeZone("GMT+8")));
+        clockTimeManager.addCityClock("London", new CityClock(TimeZone.getTimeZone("GMT+0")));
+        clockTimeManager.addCityClock("Moscow", new CityClock(TimeZone.getTimeZone("GMT+4")));
+        clockTimeManager.addCityClock("Sydney", new CityClock(TimeZone.getTimeZone("GMT+10")));
+        clockTimeManager.addCityClock("NewYork", new CityClock(TimeZone.getTimeZone("GMT-5")));
     }
 
     @Test
